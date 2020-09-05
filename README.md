@@ -1,6 +1,6 @@
 # ComputerGraphics_HW1
 Homework 1 on computer graphics [5 semester]
-Tasks:
+<br />Tasks:
  - [X] realise trajectory movement
  - [X] draw something
 
