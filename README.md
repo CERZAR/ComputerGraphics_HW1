@@ -9,11 +9,7 @@ Tasks:
  ![](Images/sinMotion.gif)
  > 1.2 - Lissajous figures
  ![](Images/lissajousFigures.gif)
- > 1.3 - Сircular motion
- 
->![](Images/circularMotion.gif)
+ > 1.3 - Сircular motion<br />![](Images/circularMotion.gif)
 
 # Task_2 - Draw something
- > Home
- 
- ![](Images/home.png)
+ > Home<br />![](Images/home.png)
