@@ -1,19 +1,19 @@
 <html>
 <body>
 
-<canvas width='1200' height='1200' id='CG_hw01'>
+<canvas width='1200' height='1450' id='CG_hw01'>
 </canvas>
 
 <script>
 
 	var canvas = document.getElementById('CG_hw01');
 	var ctx = canvas.getContext('2d');
-	ctx.fillStyle = 'black';
 
 	// #Task_1 - Trajectory movement
 	var dx1 = 0;
 	var dx2 = 0;
 	var dx3 = 0;
+
 
 	function sinMotion(t, a, dx) // #1.1 - Sinusoidal motion
 	{
@@ -28,6 +28,7 @@
 	ctx.fillRect(vx, vy, 5, 5);
 	}
 
+
 	function lissajousMotion(baseX, a1, a2, w1, w2, fi1, fi2, dx) // #1.2 - Lissajous figures
 	{
 	// Constants
@@ -40,7 +41,8 @@
 	ctx.fillRect(vx, vy, 5, 5);
 	}
 
-	function CircularMotion(r, dx) // #1.3 - Сircular motion
+
+	function circularMotion(r, dx) // #1.3 - Сircular motion
 	{
 	// Constants
 	var baseX = canvas.width / 2;
@@ -53,6 +55,59 @@
 	ctx.fillRect(baseX + vx, baseY + vy, 5, 5);
 	}
 
+
+	// #Task_2 - Drawing
+	function drawHouse()
+	{
+		var baseX = 500;
+		var baseY = 1200;
+
+		// Box
+		for (let i = 0; i < 200; i++)
+		{
+			ctx.fillRect(i + baseX, baseY + 200, 5, 5);
+			ctx.fillRect(i + baseX, baseY, 5, 5);
+			ctx.fillRect(baseX, i + baseY, 5, 5);
+			ctx.fillRect(baseX + 200, i + baseY, 5, 5);
+
+			ctx.fillRect(baseX + 300, i + baseY - 75, 5, 5);
+		}
+
+		var y = 0;
+		for (let x = 0; x < 100; x++)
+		{
+			if (y < 76) y += 0.75;
+			ctx.fillRect(x + baseX + 200, baseY - y, 4, 4);
+			ctx.fillRect(x + baseX + 200, baseY + 201 - y, 4, 4);
+		}
+
+		// Roof
+		y = 0;
+		for (let x = 0; x < 130; x++)
+		{
+			if (y < 300) y += 1.345;
+			ctx.fillRect(x + baseX, baseY - y, 4, 4);
+		}
+
+		y = 0;
+		for (let x = 0; x < 70; x++)
+		{
+			if (y < 200) y += 2.5;
+			ctx.fillRect(baseX + 199 - x, baseY - y, 4, 4);
+		}
+
+		y = 0;
+		for (let x = 0; x < 170; x++)
+		{
+			if (y < 300) y += 0.585;
+			ctx.fillRect(baseX + 300 - x, baseY - 75 - y, 4, 4);
+		}
+
+		ctx.fillRect(baseX + 100, baseY + 75, 75, 125);
+	}
+
+
+	drawHouse();
 	setInterval(function()
 	{
 		//ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -62,36 +117,22 @@
 			dx1 = 0;
 			dx2 = 0
 			dx3 = 0
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.clearRect(0, 0, canvas.width, 1000);
 		}
 
-		sinMotion(20, 60, dx1); 									// period, amplitude
+		ctx.fillStyle = 'red';
+		sinMotion(20, 60, dx1);										// period, amplitude
+		ctx.fillStyle = 'black';
 		lissajousMotion(200, 100, 100, 2, 3, 0, Math.PI/8, dx2);	// baseX, A1, A2, w1, w2, fi1, fi2
 		lissajousMotion(600, 100, 100, 1, 2, 0, Math.PI/2, dx2);	// baseX, A1, A2, w1, w2, fi1, fi2
 		lissajousMotion(1000, 100, 100, 5, 6, 0, Math.PI/2, dx2);	// baseX, A1, A2, w1, w2, fi1, fi2
-		CircularMotion(100, dx3);									// radius
+		circularMotion(100, dx3);									// radius
 
 		dx1 += 0.9;
 		dx2 += 0.005;
 		dx3 += 0.005;
 	}, 1);
 
-	/*var canvas = document.getElementById('CG_hw01');
-	var ctx = canvas.getContext('2d');
-	
-	var j = 0;
-	setInterval(function()
-		{
-			ctx.fillStyle = '#FF0F0F';
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-		
-			for (let i = 0; i <= 40; i++)
-				{
-					ctx.fillRect(10+i+j, 10+i, 2, 2);
-				}	
-				j += 1;
-		}, 5);
-			*/
 </script>
 
 </body>
