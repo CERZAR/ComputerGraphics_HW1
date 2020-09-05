@@ -11,7 +11,7 @@ Tasks:
  ![](Images/lissajousFigures.gif)
  > 1.3 - Сircular motion
  
-![](Images/circularMotion.gif)
+>![](Images/circularMotion.gif)
 
 # Task_2 - Draw something
  > Home
